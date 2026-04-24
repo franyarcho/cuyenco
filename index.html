@@ -856,6 +856,48 @@
     }
   }
 
+  /* Header flotante desktop — oculto en mobile */
+  .hab-header-desktop { display: none; }
+  @media (min-width: 861px) {
+    .hab-header-desktop {
+      display: flex !important;
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      padding: 5.5rem 4rem 1.8rem;
+      align-items: flex-end;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+    .hab-header-desktop > div:first-child { pointer-events: none; }
+    .hab-header-desktop > div:last-child {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      max-width: 60%;
+      padding-bottom: 0.3rem;
+      pointer-events: all;
+    }
+    /* Fondo gradiente según color de sección */
+    #habitaciones .hab-header-desktop {
+      background: linear-gradient(to bottom, rgba(253,250,245,0.97) 55%, rgba(253,250,245,0) 100%);
+    }
+    #habitacion-triple .hab-header-desktop {
+      background: linear-gradient(to bottom, rgba(245,240,232,0.97) 55%, rgba(245,240,232,0) 100%);
+    }
+    #exteriores .hab-header-desktop {
+      background: linear-gradient(to bottom, rgba(253,250,245,0.97) 55%, rgba(253,250,245,0) 100%);
+    }
+    /* Fotos ocupan 100% del alto de la sección */
+    #hab-doble-inner,
+    #hab-triple-inner,
+    #ext-inner { height: 100%; }
+    #hab-doble-inner .hab-fotos-wrap,
+    #hab-triple-inner .hab-fotos-wrap,
+    #ext-inner .esp-fotos-wrap { height: 100% !important; }
+  }
+
   /* ══════════════════════════════════════════════
      FOTOS HABITACIONES — desktop: 3 columnas / mobile: slider
   ══════════════════════════════════════════════ */
@@ -1147,26 +1189,26 @@ if (window.innerWidth <= 860) {
 
 <!-- 5. HABITACIÓN DOBLE -->
 <section class="snap" id="habitaciones" style="background:var(--white); overflow:hidden; position:relative;">
-  <!-- Header flotante sobre las fotos -->
-  <div style="position:absolute; top:0; left:0; right:0; z-index:10; padding:5.5rem 4rem 1.5rem; display:flex; align-items:flex-end; justify-content:space-between; pointer-events:none; background:linear-gradient(to bottom, rgba(253,250,245,0.96) 60%, rgba(253,250,245,0) 100%);">
-    <div>
-      <p class="section-tag">Habitaciones</p>
-      <h2 class="section-title">Habitación<br><em>Doble</em></h2>
-    </div>
-    <div style="padding-bottom:0.3rem; display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:flex-end; max-width:60%; pointer-events:all;">
-      <span class="badge">Cama matrimonial · o dos camas simples</span>
-      <span class="badge">Luminosa</span>
-      <span class="badge">Vista al cerro</span>
-      <span class="badge">Vista al lago</span>
-      <span class="badge">Baño privado</span>
-      <span class="badge">Calefacción</span>
-      <span class="badge">Caja fuerte</span>
-      <span class="badge">Amenities</span>
-    </div>
-  </div>
-  <!-- Fotos: ocupa todo el alto -->
   <div id="hab-doble-inner" style="height:100%;">
-    <div class="hab-fotos-wrap" id="fotos-doble" style="height:100%!important;">
+    <!-- Header: en desktop flota sobre fotos (CSS), en mobile aparece arriba -->
+    <div class="hab-header-desktop">
+      <div>
+        <p class="section-tag">Habitaciones</p>
+        <h2 class="section-title">Habitación<br><em>Doble</em></h2>
+      </div>
+      <div>
+        <span class="badge">Cama matrimonial · o dos camas simples</span>
+        <span class="badge">Luminosa</span>
+        <span class="badge">Vista al cerro</span>
+        <span class="badge">Vista al lago</span>
+        <span class="badge">Baño privado</span>
+        <span class="badge">Calefacción</span>
+        <span class="badge">Caja fuerte</span>
+        <span class="badge">Amenities</span>
+      </div>
+    </div>
+    <!-- Fotos -->
+    <div class="hab-fotos-wrap" id="fotos-doble">
       <div class="hab-foto-item"><img src="https://res.cloudinary.com/dzld5gwmr/image/upload/v1776453573/DE1A5566_1_d73ghg.jpg" alt="Doble 1"></div>
       <div class="hab-foto-item"><img src="https://res.cloudinary.com/dzld5gwmr/image/upload/v1776453575/DE1A5568_1_yqijjb.jpg" alt="Doble 2"></div>
       <div class="hab-foto-item"><img src="https://res.cloudinary.com/dzld5gwmr/image/upload/v1776453568/DE1A5574_1_fpumwv.jpg" alt="Doble 3"></div>
@@ -1198,24 +1240,24 @@ if (window.innerWidth <= 860) {
 
 <!-- 6. HABITACIÓN TRIPLE -->
 <section class="snap" id="habitacion-triple" style="background:var(--cream); overflow:hidden; position:relative;">
-  <!-- Header flotante sobre las fotos -->
-  <div style="position:absolute; top:0; left:0; right:0; z-index:10; padding:5.5rem 4rem 1.5rem; display:flex; align-items:flex-end; justify-content:space-between; pointer-events:none; background:linear-gradient(to bottom, rgba(245,240,232,0.96) 60%, rgba(245,240,232,0) 100%);">
-    <div>
-      <p class="section-tag">Habitaciones</p>
-      <h2 class="section-title">Habitación<br><em>Triple</em></h2>
-    </div>
-    <div style="padding-bottom:0.3rem; display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:flex-end; max-width:55%; pointer-events:all;">
-      <span class="badge" style="background:var(--white);">Matrimonial + individual</span>
-      <span class="badge" style="background:var(--white);">Vista al lago</span>
-      <span class="badge" style="background:var(--white);">Baño privado</span>
-      <span class="badge" style="background:var(--white);">Calefacción</span>
-      <span class="badge" style="background:var(--white);">Caja fuerte</span>
-      <span class="badge" style="background:var(--white);">Amenities</span>
-    </div>
-  </div>
-  <!-- Fotos: ocupa todo el alto -->
   <div id="hab-triple-inner" style="height:100%;">
-    <div class="hab-fotos-wrap" id="fotos-triple" style="height:100%!important;">
+    <!-- Header: en desktop flota sobre fotos (CSS), en mobile aparece arriba -->
+    <div class="hab-header-desktop">
+      <div>
+        <p class="section-tag">Habitaciones</p>
+        <h2 class="section-title">Habitación<br><em>Triple</em></h2>
+      </div>
+      <div>
+        <span class="badge" style="background:var(--white);">Matrimonial + individual</span>
+        <span class="badge" style="background:var(--white);">Vista al lago</span>
+        <span class="badge" style="background:var(--white);">Baño privado</span>
+        <span class="badge" style="background:var(--white);">Calefacción</span>
+        <span class="badge" style="background:var(--white);">Caja fuerte</span>
+        <span class="badge" style="background:var(--white);">Amenities</span>
+      </div>
+    </div>
+    <!-- Fotos -->
+    <div class="hab-fotos-wrap" id="fotos-triple">
       <div class="hab-foto-item"><img src="https://res.cloudinary.com/dzld5gwmr/image/upload/v1776455553/DE1A5698_1_wb85pl.jpg" alt="Triple 1"></div>
       <div class="hab-foto-item"><img src="https://res.cloudinary.com/dzld5gwmr/image/upload/v1776455558/DE1A5694_1_hqzspg.jpg" alt="Triple 2"></div>
       <div class="hab-foto-item"><img src="https://res.cloudinary.com/dzld5gwmr/image/upload/v1776455556/DE1A5703_1_fqi8ap.jpg" alt="Triple 3"></div>
@@ -1292,23 +1334,21 @@ if (window.innerWidth <= 860) {
 
 <!-- 6. ESPACIOS EXTERIORES -->
 <section class="snap mob-hidden" id="exteriores" style="background:var(--white); overflow:hidden; position:relative;">
-  <!-- Header flotante sobre las fotos -->
-  <div style="position:absolute; top:0; left:0; right:0; z-index:10; padding:5.5rem 4rem 1.5rem; display:flex; align-items:flex-end; justify-content:space-between; pointer-events:none; background:linear-gradient(to bottom, rgba(253,250,245,0.96) 60%, rgba(253,250,245,0) 100%);">
-    <div>
-      <p class="section-tag">Al aire libre</p>
-      <h2 class="section-title">Cada rincón,<br><em>una experiencia</em></h2>
-    </div>
-    <div style="padding-bottom:0.3rem; display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:flex-end; max-width:60%; pointer-events:all;">
-      <span class="badge">Parque</span>
-      <span class="badge">Jacuzzi exterior</span>
-      <span class="badge">Quincho con parrilla</span>
-      <span class="badge">Bajada al lago</span>
-      <span class="badge">Bosque de arrayanes</span>
-    </div>
-  </div>
-  <!-- Fotos: ocupa todo el alto -->
   <div id="ext-inner" style="height:100%;">
-    <div class="esp-fotos-wrap" id="fotos-exteriores" style="height:100%!important;">
+    <div class="hab-header-desktop">
+      <div>
+        <p class="section-tag">Al aire libre</p>
+        <h2 class="section-title">Cada rincón,<br><em>una experiencia</em></h2>
+      </div>
+      <div>
+        <span class="badge">Parque</span>
+        <span class="badge">Jacuzzi exterior</span>
+        <span class="badge">Quincho con parrilla</span>
+        <span class="badge">Bajada al lago</span>
+        <span class="badge">Bosque de arrayanes</span>
+      </div>
+    </div>
+    <div class="esp-fotos-wrap" id="fotos-exteriores">
       <div class="esp-foto-item" style="position:relative;">
         <img src="https://res.cloudinary.com/dzld5gwmr/image/upload/v1776456054/DE1A5743_1_qe95mo.jpg" alt="Naturaleza" style="width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block;transition:transform 0.6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
       </div>
@@ -1339,38 +1379,6 @@ if (window.innerWidth <= 860) {
       </div>
     </div>
   </div>
-</section>
-      <div class="esp-foto-item" style="position:relative;">
-        <img src="https://res.cloudinary.com/dzld5gwmr/image/upload/v1776456054/DE1A5743_1_qe95mo.jpg" alt="Naturaleza" style="width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block;transition:transform 0.6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-      </div>
-      <div class="esp-foto-item" style="position:relative;">
-        <img src="https://res.cloudinary.com/dzld5gwmr/image/upload/v1776456047/DE1A5752_1_a4dmy9.jpg" alt="Lago" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transition:transform 0.6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-      </div>
-      <div class="esp-foto-item" style="position:relative;">
-        <img src="https://res.cloudinary.com/dzld5gwmr/image/upload/v1776456052/DE1A5727_1_xkm9bp.jpg" alt="Parque" style="width:100%;height:100%;object-fit:cover;object-position:center 65%;display:block;transition:transform 0.6s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">
-      </div>
-      <button class="esp-arrow esp-prev" onclick="sliderNav('fotos-exteriores',-1,'esp')" aria-label="Anterior">&#8249;</button>
-      <button class="esp-arrow esp-next" onclick="sliderNav('fotos-exteriores', 1,'esp')" aria-label="Siguiente">&#8250;</button>
-      <div class="esp-dots" id="dots-fotos-exteriores">
-        <span class="hab-dot active" onclick="sliderNav('fotos-exteriores',0,'esp',true)"></span>
-        <span class="hab-dot" onclick="sliderNav('fotos-exteriores',1,'esp',true)"></span>
-        <span class="hab-dot" onclick="sliderNav('fotos-exteriores',2,'esp',true)"></span>
-      </div>
-      <!-- Overlay mobile — igual que habitaciones -->
-      <div class="hab-overlay ext-overlay">
-        <span class="hab-overlay-tag">Al aire libre</span>
-        <h2 class="hab-overlay-title">Espacios <em>exteriores</em></h2>
-        <div class="hab-overlay-badges">
-          <span class="hab-overlay-badge">Parque</span>
-          <span class="hab-overlay-badge">Jacuzzi exterior</span>
-          <span class="hab-overlay-badge">Quincho con parrilla</span>
-          <span class="hab-overlay-badge">Bajada al lago</span>
-          <span class="hab-overlay-badge">Bosque de arrayanes</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  
 </section>
 <div class="mob-hidden sec-titulo-mobile cream">
   <p>Modalidad exclusiva</p>

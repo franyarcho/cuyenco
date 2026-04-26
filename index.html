@@ -32,6 +32,12 @@
   nav.scrolled .nav-cta { border-color: var(--stone-light); color: var(--stone); }
   nav.scrolled .nav-cta:hover { background: var(--bark); border-color: var(--bark); color: var(--white); }
 
+  /* Language switcher */
+  .lang-switcher { display: flex; align-items: center; gap: 0.4rem; margin-right: 0.8rem; }
+  .lang-btn { background: none; border: 2px solid transparent; border-radius: 4px; cursor: pointer; padding: 2px; transition: border-color .2s, opacity .2s; opacity: .55; line-height: 0; }
+  .lang-btn:hover { opacity: 1; }
+  .lang-btn.active { border-color: var(--gold); opacity: 1; }
+
   /* Hamburguesa (oculta en desktop) */
   .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.2rem; flex-direction: column; gap: 5px; z-index: 210; }
   .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--white); transition: all 0.3s; }
@@ -50,7 +56,7 @@
   .scroll-line { width: 0.8px; height: 32px; background: currentColor; }
   @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
 
-  .hero-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(20,18,15,0.2) 0%, rgba(20,18,15,0.0) 40%, rgba(20,18,15,0.55) 100%), url('https://res.cloudinary.com/dzld5gwmr/image/upload/v1776393205/DE1A4526_1_c62uzr.jpg') center/cover no-repeat; transform: scale(1.08); animation: slowZoom 18s ease-out forwards; will-change: transform; }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,15,25,0.35) 0%, rgba(10,15,25,0.05) 40%, rgba(10,15,25,0.65) 100%), url('https://res.cloudinary.com/dzld5gwmr/image/upload/v1777166639/WhatsApp_Image_2026-04-25_at_8.29.24_PM_rw1092.jpg') center/cover no-repeat; transform: scale(1.08); animation: slowZoom 18s ease-out forwards; will-change: transform; }
   @keyframes slowZoom { from{transform:scale(1.03)} to{transform:scale(1.0)} }
   .hero-content { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); text-align: center; animation: fadeUp 1.3s ease both 0.3s; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
@@ -60,6 +66,8 @@
   .hero-sub { font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 2.5rem; }
   .hero-btn { display: inline-block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--stone); background: var(--gold); padding: 0.95rem 2.4rem; text-decoration: none; transition: background 0.3s; }
   .hero-btn:hover { background: var(--white); }
+  .hero-winter { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 6vw, 4.5rem); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.82); letter-spacing: 0.06em; line-height: 1; margin-bottom: 1.2rem; text-shadow: 0 2px 24px rgba(100,160,220,0.35); }
+  .hero-winter-year { font-style: normal; font-weight: 500; color: #a8d4f0; letter-spacing: 0.1em; }
 
   .split { display: grid; grid-template-columns: 58% 42%; }
   .split.reverse { grid-template-columns: 42% 58%; }
@@ -504,7 +512,7 @@
           rgba(20,18,15,0.62) 20%,
           rgba(20,18,15,0.25) 45%,
           rgba(20,18,15,0.0) 70%),
-        url('https://res.cloudinary.com/dzld5gwmr/image/upload/v1776393205/DE1A4526_1_c62uzr.jpg') !important;
+        url('https://res.cloudinary.com/dzld5gwmr/image/upload/v1777166639/WhatsApp_Image_2026-04-25_at_8.29.24_PM_rw1092.jpg') !important;
     }
     .hero-content {
       padding: 0 1.6rem;
@@ -1167,7 +1175,12 @@ src="https://www.facebook.com/tr?id=2001126874143741&ev=PageView&noscript=1"
     <li><a href="#tarifas">Tarifas</a></li>
     <li><a href="#nosotros">Nosotros</a></li>
   </ul>
-  <a href="#tarifas" class="nav-cta">Reservar</a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" id="lang-es" onclick="setLang('es')" title="Español"><svg width="24" height="16" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="16" fill="#74ACDF"/><rect y="4.5" width="24" height="7" fill="#fff"/><rect y="11.5" width="24" height="4.5" fill="#74ACDF"/><circle cx="12" cy="8" r="2" fill="#F6B40E" stroke="#85340A" stroke-width="0.3"/></svg></button>
+    <button class="lang-btn" id="lang-en" onclick="setLang('en')" title="English"><svg width="24" height="16" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="40" fill="#012169"/><line x1="0" y1="0" x2="60" y2="40" stroke="#fff" stroke-width="8"/><line x1="60" y1="0" x2="0" y2="40" stroke="#fff" stroke-width="8"/><line x1="0" y1="0" x2="60" y2="40" stroke="#C8102E" stroke-width="4"/><line x1="60" y1="0" x2="0" y2="40" stroke="#C8102E" stroke-width="4"/><rect x="24" y="0" width="12" height="40" fill="#fff"/><rect x="0" y="14" width="60" height="12" fill="#fff"/><rect x="26" y="0" width="8" height="40" fill="#C8102E"/><rect x="0" y="16" width="60" height="8" fill="#C8102E"/></svg></button>
+    <button class="lang-btn" id="lang-pt" onclick="setLang('pt')" title="Português"><svg width="24" height="16" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="40" fill="#009C3B"/><polygon points="30,2 58,20 30,38 2,20" fill="#FEDF00"/><circle cx="30" cy="20" r="11" fill="#002776"/><text x="30" y="23" text-anchor="middle" font-size="4.5" fill="white" font-family="sans-serif" font-weight="bold" letter-spacing="0.5">BR</text></svg></button>
+  </div>
+  <a href="#tarifas" class="nav-cta" id="nav-cta-reservar">Reservar</a>
   <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menú">
     <span></span><span></span><span></span>
   </button>
@@ -1190,7 +1203,8 @@ src="https://www.facebook.com/tr?id=2001126874143741&ev=PageView&noscript=1"
   <div class="hero-content">
     <p class="hero-eyebrow">Villa La Angostura · Patagonia</p>
     <h1 class="hero-title">Cuyen CO</h1>
-    <p class="hero-sub">Hostería boutique · Desde 1991</p>
+    <p class="hero-winter">Invierno <span class="hero-winter-year">2026</span></p>
+    <p class="hero-sub">Nieve, silencio y fuego · Hostería boutique</p>
     <a href="#bienvenida" class="hero-btn">Descubrir</a>
   </div>
 </section>
@@ -2696,7 +2710,7 @@ cargarDatosFirebase();
 <!-- Botón flotante -->
 <button class="mob-booking-btn" onclick="abrirPanelReserva()">
   <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-  Consultar fechas
+  ❄️ Consultar fechas
 </button>
 
 <!-- Overlay -->
@@ -2748,4 +2762,333 @@ cargarDatosFirebase();
 
 </script>
 </body>
-</html>
+</html><!-- SISTEMA DE IDIOMAS ES / EN / PT -->
+<script>
+const CUYEN_LANGS = {
+  es: {
+    navServicios: 'Servicios', navHabitaciones: 'Habitaciones', navFullhouse: 'Full House',
+    navTarifas: 'Tarifas', navNosotros: 'Nosotros', navReservar: 'Reservar',
+    waTitle: '¿Consultas? Escribinos',
+    mobBtn: '❄️ Consultar fechas',
+    heroEyebrow: 'Villa La Angostura · Patagonia',
+    heroWinter: 'Invierno', heroWinterYear: '2026',
+    heroSub: 'Nieve, silencio y fuego · Hostería boutique',
+    heroBtnText: 'Descubrir',
+    bienTag: 'Bienvenidos', bienTitle: 'A orillas del<br><em>lago Correntoso</em>',
+    bienBody: 'A solo 2 minutos a pie, a través de un bosque autóctono de arrayanes, encontrarás la orilla del lago Correntoso. Cuyen CO es una hostería de 10 habitaciones con vista al lago y al cerro Belvedere, donde la naturaleza patagónica entra por cada ventana.',
+    bienBadge1: '10 habitaciones', bienBadge2: 'Vista al lago', bienBadge3: 'Bajada al lago', bienBadge4: 'Desde 1991',
+    espTag: 'Nuestros espacios', espTitle: 'Cada rincón,<br><em>una experiencia</em>',
+    svcTag: 'Servicios', svcTitle: 'Todo lo que <em>necesitás</em>',
+    svc: ['Desayuno incluido','Jacuzzi exterior','Parque y quincho','Hogar a leña','Bajada al lago','Wi-Fi · Estacionamiento','Limpieza diaria','Traslados y excursiones'],
+    svcListFull: ['Desayuno incluido todas las mañanas','Jacuzzi exterior con vista al parque','Gran parque con espacios al aire libre','Quincho con parrilla para huéspedes','Hogar a leña en el living','Bajada al lago Correntoso a 2 minutos','Limpieza diaria de habitaciones','Estacionamiento privado sin cargo','Wi-Fi en todas las áreas','Traslados al aeropuerto y excursiones (opcional)'],
+    habTag: 'Habitaciones', habDoubleTitle: 'Habitación<br><em>Doble</em>', habTripleTitle: 'Habitación<br><em>Triple</em>',
+    habDoubleBadges: ['Cama matrimonial · o dos camas simples','Luminosa','Vista al cerro','Vista al lago','Baño privado','Calefacción','Caja fuerte','Amenities'],
+    habTripleBadges: ['Matrimonial + individual','Vista al lago','Baño privado','Calefacción','Caja fuerte','Amenities'],
+    fullTag: 'Modalidad exclusiva', fullTitle: 'Hostería<br><em>completa</em>',
+    fullBody: 'Reservá las 10 habitaciones de Cuyen CO para tu grupo. Ideal para reuniones familiares, retiros corporativos, celebraciones o escapadas con amigos en la Patagonia.',
+    fullBadges: ['6 Dobles · 4 Triples','Hasta 24 personas','Uso exclusivo','Lago Correntoso','Tarifas a consultar'],
+    fullBtn: 'Consultar Full House',
+    tarTag: 'Reservas', tarTitle: 'Calculá tu<br><em>estadía</em>',
+    checkinLabel: 'Check-in', checkoutLabel: 'Check-out',
+    selectDate: 'Seleccionar', guestsLabel: 'Huéspedes', adultsLabel: 'Adultos', adultsSub: '13 años o más', kidsLabel: 'Menores', kidsSub: 'Hasta 12 años',
+    searchBtn: 'Buscar disponibilidad',
+    nosTag: 'Nuestra historia', nosTitle: 'Más de 30 años<br><em>de hospitalidad</em>',
+    nosBody: 'Fue en 1991 cuando Roberto y Jorgelina decidieron convertir su hogar en un lugar de bienvenida para viajeros de todo el mundo. Hoy, tres décadas después, la hostería sigue atendida con la misma calidez de siempre, manteniendo intacta la esencia que nos caracteriza.',
+    ubicTag: 'Ubicación', ubicTitle: 'Encontranos<br><em>en la Patagonia</em>',
+    reviewsTitle: 'Lo que dicen nuestros huéspedes',
+    footerSub: 'Villa La Angostura · Lago Correntoso · Neuquén · Patagonia Argentina',
+    footerCopy: '© 2025 Cuyen CO',
+  },
+  en: {
+    navServicios: 'Services', navHabitaciones: 'Rooms', navFullhouse: 'Full House',
+    navTarifas: 'Rates', navNosotros: 'About', navReservar: 'Book',
+    waTitle: 'Questions? Chat with us',
+    mobBtn: '❄️ Check availability',
+    heroEyebrow: 'Villa La Angostura · Patagonia',
+    heroWinter: 'Winter', heroWinterYear: '2026',
+    heroSub: 'Snow, silence & fire · Boutique inn',
+    heroBtnText: 'Discover',
+    bienTag: 'Welcome', bienTitle: 'On the shores of<br><em>Lake Correntoso</em>',
+    bienBody: 'Just a 2-minute walk through a native arrayán forest, you will find the shore of Lake Correntoso. Cuyen CO is a 10-room boutique inn with views of the lake and Cerro Belvedere, where Patagonian nature comes through every window.',
+    bienBadge1: '10 rooms', bienBadge2: 'Lake view', bienBadge3: 'Lake access', bienBadge4: 'Since 1991',
+    espTag: 'Our spaces', espTitle: 'Every corner,<br><em>an experience</em>',
+    svcTag: 'Services', svcTitle: 'Everything you <em>need</em>',
+    svc: ['Breakfast included','Outdoor jacuzzi','Garden & BBQ area','Wood-burning fireplace','Lake access','Wi-Fi · Parking','Daily housekeeping','Transfers & excursions'],
+    svcListFull: ['Breakfast included every morning','Outdoor jacuzzi with garden views','Large garden with open-air spaces','BBQ area for guests','Wood-burning fireplace in the lounge','Lake Correntoso access, 2 minutes away','Daily room cleaning','Free private parking','Wi-Fi throughout','Airport transfers & excursions (optional)'],
+    habTag: 'Rooms', habDoubleTitle: 'Double<br><em>Room</em>', habTripleTitle: 'Triple<br><em>Room</em>',
+    habDoubleBadges: ['Double bed · or two single beds','Bright','Mountain view','Lake view','Private bathroom','Heating','Safe','Amenities'],
+    habTripleBadges: ['Double + single bed','Lake view','Private bathroom','Heating','Safe','Amenities'],
+    fullTag: 'Exclusive mode', fullTitle: 'Full<br><em>Buyout</em>',
+    fullBody: 'Book all 10 rooms of Cuyen CO for your group. Perfect for family reunions, corporate retreats, celebrations or getaways with friends in Patagonia.',
+    fullBadges: ['6 Doubles · 4 Triples','Up to 24 guests','Exclusive use','Lake Correntoso','Rates on request'],
+    fullBtn: 'Inquire about Full House',
+    tarTag: 'Reservations', tarTitle: 'Calculate your<br><em>stay</em>',
+    checkinLabel: 'Check-in', checkoutLabel: 'Check-out',
+    selectDate: 'Select', guestsLabel: 'Guests', adultsLabel: 'Adults', adultsSub: '13 years or older', kidsLabel: 'Children', kidsSub: 'Up to 12 years',
+    searchBtn: 'Check availability',
+    nosTag: 'Our story', nosTitle: 'Over 30 years<br><em>of hospitality</em>',
+    nosBody: 'In 1991, Roberto and Jorgelina decided to open their home to travellers from around the world. Three decades later, the inn is still run with the same warmth, keeping intact the essence that defines us.',
+    ubicTag: 'Location', ubicTitle: 'Find us<br><em>in Patagonia</em>',
+    reviewsTitle: 'What our guests say',
+    footerSub: 'Villa La Angostura · Lake Correntoso · Neuquén · Patagonia Argentina',
+    footerCopy: '© 2025 Cuyen CO',
+  },
+  pt: {
+    navServicios: 'Serviços', navHabitaciones: 'Quartos', navFullhouse: 'Full House',
+    navTarifas: 'Tarifas', navNosotros: 'Sobre nós', navReservar: 'Reservar',
+    waTitle: 'Dúvidas? Fale conosco',
+    mobBtn: '❄️ Consultar datas',
+    heroEyebrow: 'Villa La Angostura · Patagônia',
+    heroWinter: 'Inverno', heroWinterYear: '2026',
+    heroSub: 'Neve, silêncio e fogo · Pousada boutique',
+    heroBtnText: 'Descobrir',
+    bienTag: 'Bem-vindos', bienTitle: 'À beira do<br><em>Lago Correntoso</em>',
+    bienBody: 'A apenas 2 minutos a pé, por uma floresta nativa de arrayanes, você encontrará a margem do Lago Correntoso. Cuyen CO é uma pousada boutique de 10 quartos com vista para o lago e o Cerro Belvedere, onde a natureza patagônica entra por cada janela.',
+    bienBadge1: '10 quartos', bienBadge2: 'Vista ao lago', bienBadge3: 'Acesso ao lago', bienBadge4: 'Desde 1991',
+    espTag: 'Nossos espaços', espTitle: 'Cada canto,<br><em>uma experiência</em>',
+    svcTag: 'Serviços', svcTitle: 'Tudo que você <em>precisa</em>',
+    svc: ['Café da manhã incluso','Jacuzzi externo','Jardim e churrasqueira','Lareira a lenha','Acesso ao lago','Wi-Fi · Estacionamento','Limpeza diária','Traslados e excursões'],
+    svcListFull: ['Café da manhã incluso todas as manhãs','Jacuzzi externo com vista ao jardim','Grande jardim com espaços ao ar livre','Churrasqueira para hóspedes','Lareira a lenha na sala','Acesso ao Lago Correntoso a 2 minutos','Limpeza diária dos quartos','Estacionamento privativo gratuito','Wi-Fi em todas as áreas','Traslados ao aeroporto e excursões (opcional)'],
+    habTag: 'Quartos', habDoubleTitle: 'Quarto<br><em>Duplo</em>', habTripleTitle: 'Quarto<br><em>Triplo</em>',
+    habDoubleBadges: ['Cama de casal · ou duas simples','Luminoso','Vista à montanha','Vista ao lago','Banheiro privativo','Aquecimento','Cofre','Amenidades'],
+    habTripleBadges: ['Casal + solteiro','Vista ao lago','Banheiro privativo','Aquecimento','Cofre','Amenidades'],
+    fullTag: 'Modalidade exclusiva', fullTitle: 'Pousada<br><em>completa</em>',
+    fullBody: 'Reserve todos os 10 quartos do Cuyen CO para o seu grupo. Ideal para reuniões familiares, retiros corporativos, celebrações ou escapadas com amigos na Patagônia.',
+    fullBadges: ['6 Duplos · 4 Triplos','Até 24 hóspedes','Uso exclusivo','Lago Correntoso','Tarifas sob consulta'],
+    fullBtn: 'Consultar Full House',
+    tarTag: 'Reservas', tarTitle: 'Calcule sua<br><em>estadia</em>',
+    checkinLabel: 'Check-in', checkoutLabel: 'Check-out',
+    selectDate: 'Selecionar', guestsLabel: 'Hóspedes', adultsLabel: 'Adultos', adultsSub: '13 anos ou mais', kidsLabel: 'Crianças', kidsSub: 'Até 12 anos',
+    searchBtn: 'Verificar disponibilidade',
+    nosTag: 'Nossa história', nosTitle: 'Mais de 30 anos<br><em>de hospitalidade</em>',
+    nosBody: 'Em 1991, Roberto e Jorgelina decidiram abrir sua casa para viajantes de todo o mundo. Três décadas depois, a pousada ainda é gerida com o mesmo calor humano, mantendo intacta a essência que nos define.',
+    ubicTag: 'Localização', ubicTitle: 'Nos encontre<br><em>na Patagônia</em>',
+    reviewsTitle: 'O que nossos hóspedes dizem',
+    footerSub: 'Villa La Angostura · Lago Correntoso · Neuquén · Patagônia Argentina',
+    footerCopy: '© 2025 Cuyen CO',
+  }
+};
+
+let currentLang = 'es';
+
+function setLang(lang) {
+  currentLang = lang;
+  const T = CUYEN_LANGS[lang];
+  if (!T) return;
+
+  // Botones activos
+  ['es','en','pt'].forEach(l => {
+    const btn = document.getElementById('lang-' + l);
+    if (btn) btn.classList.toggle('active', l === lang);
+  });
+
+  // Nav links
+  const navLinks = document.querySelectorAll('.nav-links a');
+  if (navLinks[0]) navLinks[0].textContent = T.navServicios;
+  if (navLinks[1]) navLinks[1].textContent = T.navHabitaciones;
+  if (navLinks[2]) navLinks[2].textContent = T.navFullhouse;
+  if (navLinks[3]) navLinks[3].textContent = T.navTarifas;
+  if (navLinks[4]) navLinks[4].textContent = T.navNosotros;
+  const navCta = document.getElementById('nav-cta-reservar');
+  if (navCta) navCta.textContent = T.navReservar;
+
+  // Drawer mobile links
+  const drawerLinks = document.querySelectorAll('.nav-drawer a:not(.drawer-cta):not(.drawer-close)');
+  if (drawerLinks[0]) drawerLinks[0].textContent = T.navServicios;
+  if (drawerLinks[1]) drawerLinks[1].textContent = T.navHabitaciones;
+  if (drawerLinks[2]) drawerLinks[2].textContent = T.navFullhouse;
+  if (drawerLinks[3]) drawerLinks[3].textContent = T.navTarifas;
+  if (drawerLinks[4]) drawerLinks[4].textContent = T.navNosotros;
+  const drawerCta = document.querySelector('.drawer-cta');
+  if (drawerCta) drawerCta.textContent = T.navReservar;
+
+  // WA float
+  const waTitle = document.querySelector('.wa-float-title');
+  if (waTitle) waTitle.textContent = T.waTitle;
+  const waFloat = document.querySelector('.wa-float');
+  if (waFloat) {
+    const msgs = { es: 'Hola! Quiero consultar disponibilidad en Cuyen CO.', en: 'Hello! I would like to check availability at Cuyen CO.', pt: 'Olá! Gostaria de verificar disponibilidade no Cuyen CO.' };
+    waFloat.href = 'https://wa.me/5492944562177?text=' + encodeURIComponent(msgs[lang] || msgs.es);
+  }
+
+  // Botón flotante mobile
+  const mobBtn = document.querySelector('.mob-booking-btn');
+  if (mobBtn) mobBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> ' + T.mobBtn;
+
+  // Hero
+  const heroEyebrow = document.querySelector('.hero-eyebrow');
+  if (heroEyebrow) heroEyebrow.textContent = T.heroEyebrow;
+  const heroWinter = document.querySelector('.hero-winter');
+  if (heroWinter) heroWinter.innerHTML = T.heroWinter + ' <span class="hero-winter-year">' + T.heroWinterYear + '</span>';
+  const heroSub = document.querySelector('.hero-sub');
+  if (heroSub) heroSub.textContent = T.heroSub;
+  const heroBtn = document.querySelector('.hero-btn');
+  if (heroBtn) heroBtn.textContent = T.heroBtnText;
+
+  // Bienvenida
+  const bienTag = document.querySelector('#bienvenida .section-tag');
+  if (bienTag) bienTag.textContent = T.bienTag;
+  const bienTitle = document.querySelector('#bienvenida .section-title');
+  if (bienTitle) bienTitle.innerHTML = T.bienTitle;
+  const bienBody = document.querySelector('#bienvenida .section-body');
+  if (bienBody) bienBody.textContent = T.bienBody;
+  const bienBadges = document.querySelectorAll('#bienvenida .badge');
+  if (bienBadges[0]) bienBadges[0].textContent = T.bienBadge1;
+  if (bienBadges[1]) bienBadges[1].textContent = T.bienBadge2;
+  if (bienBadges[2]) bienBadges[2].textContent = T.bienBadge3;
+  if (bienBadges[3]) bienBadges[3].textContent = T.bienBadge4;
+
+  // Espacios
+  const espTag = document.querySelector('#espacios .section-tag');
+  if (espTag) espTag.textContent = T.espTag;
+  const espTitle = document.querySelector('#espacios .section-title');
+  if (espTitle) espTitle.innerHTML = T.espTitle;
+
+  // Servicios mobile inline
+  const svcTag = document.querySelector('.servicios-mobile-inline .section-tag');
+  if (svcTag) svcTag.textContent = T.svcTag;
+  const svcTitle = document.querySelector('.servicios-mobile-inline h2');
+  if (svcTitle) svcTitle.innerHTML = T.svcTitle;
+  document.querySelectorAll('.svc-item span').forEach((el, i) => {
+    if (T.svc[i]) el.textContent = T.svc[i];
+  });
+
+  // Servicios desktop list
+  const svcDesktopTag = document.querySelector('#servicios .section-tag');
+  if (svcDesktopTag) svcDesktopTag.textContent = T.svcTag;
+  const svcDesktopTitle = document.querySelector('#servicios h2');
+  if (svcDesktopTitle) svcDesktopTitle.innerHTML = T.svcTitle;
+  document.querySelectorAll('#servicios ul li').forEach((el, i) => {
+    if (T.svcListFull[i]) {
+      const dot = el.querySelector('.svc-dot');
+      el.textContent = T.svcListFull[i];
+      if (dot) el.prepend(dot);
+    }
+  });
+
+  // Habitación Doble
+  const habDoubleTag = document.querySelector('#habitaciones .section-tag');
+  if (habDoubleTag) habDoubleTag.textContent = T.habTag;
+  const habDoubleTitle = document.querySelector('#habitaciones .section-title');
+  if (habDoubleTitle) habDoubleTitle.innerHTML = T.habDoubleTitle;
+  const habDoubleOverlayTag = document.querySelector('#habitaciones .hab-overlay-tag');
+  if (habDoubleOverlayTag) habDoubleOverlayTag.textContent = T.habTag;
+  const habDoubleOverlayTitle = document.querySelector('#habitaciones .hab-overlay-title');
+  if (habDoubleOverlayTitle) habDoubleOverlayTitle.innerHTML = (lang === 'es' ? 'Habitación ' : (lang === 'en' ? 'Double ' : 'Quarto ')) + '<em>' + (lang === 'es' ? 'Doble' : (lang === 'en' ? 'Room' : 'Duplo')) + '</em>';
+  document.querySelectorAll('#habitaciones .badge').forEach((el, i) => {
+    if (T.habDoubleBadges[i]) el.textContent = T.habDoubleBadges[i];
+  });
+  document.querySelectorAll('#habitaciones .hab-overlay-badge').forEach((el, i) => {
+    if (T.habDoubleBadges[i]) el.textContent = T.habDoubleBadges[i];
+  });
+
+  // Habitación Triple
+  ['#habitacion-triple', '#habitacion-triple-2'].forEach((sel, idx) => {
+    const sec = document.querySelector(sel);
+    if (!sec) return;
+    const tag = sec.querySelector('.section-tag');
+    if (tag) tag.textContent = T.habTag;
+    const title = sec.querySelector('.section-title');
+    if (title) title.innerHTML = T.habTripleTitle;
+    const overlayTag = sec.querySelector('.hab-overlay-tag');
+    if (overlayTag) overlayTag.textContent = T.habTag;
+    const overlayTitle = sec.querySelector('.hab-overlay-title');
+    if (overlayTitle) overlayTitle.innerHTML = (lang === 'es' ? 'Habitación ' : (lang === 'en' ? 'Triple ' : 'Quarto ')) + '<em>' + (lang === 'es' ? 'Triple' : (lang === 'en' ? 'Room' : 'Triplo')) + '</em>';
+    sec.querySelectorAll('.badge').forEach((el, i) => {
+      if (T.habTripleBadges[i]) el.textContent = T.habTripleBadges[i];
+    });
+    sec.querySelectorAll('.hab-overlay-badge').forEach((el, i) => {
+      if (T.habTripleBadges[i]) el.textContent = T.habTripleBadges[i];
+    });
+  });
+
+  // Full House
+  const fullTag = document.querySelector('#fullhouse .section-tag');
+  if (fullTag) fullTag.textContent = T.fullTag;
+  const fullTitle = document.querySelector('#fullhouse .section-title');
+  if (fullTitle) fullTitle.innerHTML = T.fullTitle;
+  const fullBody = document.querySelector('#fullhouse .section-body');
+  if (fullBody) fullBody.textContent = T.fullBody;
+  const fullOverlayTag = document.querySelector('#fullhouse .hab-overlay-tag');
+  if (fullOverlayTag) fullOverlayTag.textContent = T.fullTag;
+  const fullOverlayTitle = document.querySelector('#fullhouse .hab-overlay-title');
+  if (fullOverlayTitle) fullOverlayTitle.innerHTML = lang === 'es' ? 'Hostería <em>completa</em>' : (lang === 'en' ? 'Full <em>Buyout</em>' : 'Pousada <em>completa</em>');
+  const fullOverlayDesc = document.querySelector('.fullhouse-overlay-desc');
+  if (fullOverlayDesc) fullOverlayDesc.textContent = T.fullBody;
+  document.querySelectorAll('#fullhouse .badge').forEach((el, i) => {
+    if (T.fullBadges[i]) el.textContent = T.fullBadges[i];
+  });
+  document.querySelectorAll('#fullhouse .hab-overlay-badge').forEach((el, i) => {
+    if (T.fullBadges[i]) el.textContent = T.fullBadges[i];
+  });
+  const fullBtn = document.querySelector('#fullhouse .hero-btn');
+  if (fullBtn) {
+    const svg = fullBtn.querySelector('svg');
+    fullBtn.textContent = T.fullBtn;
+    if (svg) fullBtn.prepend(svg);
+  }
+  // WA link Full House
+  if (fullBtn) {
+    const msgs = { es: 'Hola!%20Quisiera%20consultar%20por%20la%20modalidad%20Full%20House%20(hoster%C3%ADa%20completa)%20en%20Cuyen%20CO.', en: 'Hello!%20I%20would%20like%20to%20inquire%20about%20the%20Full%20House%20option%20at%20Cuyen%20CO.', pt: 'Ol%C3%A1!%20Gostaria%20de%20consultar%20a%20modalidade%20Full%20House%20no%20Cuyen%20CO.' };
+    fullBtn.href = 'https://wa.me/5492944562177?text=' + msgs[lang];
+  }
+
+  // Tarifas
+  const tarTag = document.querySelector('#tarifas .section-tag');
+  if (tarTag) tarTag.textContent = T.tarTag;
+  const tarTitle = document.querySelector('#tarifas .section-title');
+  if (tarTitle) tarTitle.innerHTML = T.tarTitle;
+  const fechasLabels = document.querySelectorAll('.res-fecha-label');
+  if (fechasLabels[0]) fechasLabels[0].textContent = T.checkinLabel;
+  if (fechasLabels[1]) fechasLabels[1].textContent = T.checkoutLabel;
+  const lblEntrada = document.getElementById('lbl-entrada');
+  if (lblEntrada && (lblEntrada.textContent === 'Selecionar' || lblEntrada.textContent === 'Select' || lblEntrada.textContent === 'Selecionar')) lblEntrada.textContent = T.selectDate;
+  const lblSalida = document.getElementById('lbl-salida');
+  if (lblSalida && (lblSalida.textContent === 'Seleccionar' || lblSalida.textContent === 'Select' || lblSalida.textContent === 'Selecionar')) lblSalida.textContent = T.selectDate;
+  const guestsLbl = document.querySelector('.res-huesp-label');
+  if (guestsLbl) guestsLbl.textContent = T.guestsLabel;
+  const huestRows = document.querySelectorAll('.res-huesp-info h4');
+  const huestSubs = document.querySelectorAll('.res-huesp-info p');
+  if (huestRows[0]) huestRows[0].textContent = T.adultsLabel;
+  if (huestSubs[0]) huestSubs[0].textContent = T.adultsSub;
+  if (huestRows[1]) huestRows[1].textContent = T.kidsLabel;
+  if (huestSubs[1]) huestSubs[1].textContent = T.kidsSub;
+  const searchBtn = document.querySelector('.res-buscar-btn');
+  if (searchBtn) searchBtn.textContent = T.searchBtn;
+  // Panel mobile tarifas title
+  const mobPanelTitle = document.querySelector('.mob-panel-title');
+  if (mobPanelTitle) mobPanelTitle.innerHTML = lang === 'es' ? 'Calculá tu <em>estadía</em>' : (lang === 'en' ? 'Calculate your <em>stay</em>' : 'Calcule sua <em>estadia</em>');
+
+  // Nosotros
+  const nosTag = document.querySelector('#nosotros .section-tag');
+  if (nosTag) nosTag.textContent = T.nosTag;
+  const nosTitle = document.querySelector('#nosotros .section-title');
+  if (nosTitle) nosTitle.innerHTML = T.nosTitle;
+  document.querySelectorAll('#nosotros .section-body').forEach(el => el.textContent = T.nosBody);
+
+  // Ubicación / Reviews
+  const ubicTag = document.querySelector('#contacto .section-tag');
+  if (ubicTag) ubicTag.textContent = T.ubicTag;
+  const ubicTitle = document.querySelector('#contacto .section-title');
+  if (ubicTitle) ubicTitle.innerHTML = T.ubicTitle;
+  const revTitle = document.querySelector('.reviews-title');
+  if (revTitle) revTitle.textContent = T.reviewsTitle;
+
+  // Footer
+  const footerSub = document.querySelector('footer p:first-of-type');
+  if (footerSub) footerSub.textContent = T.footerSub;
+  const footerCopy = document.querySelector('footer p:last-of-type');
+  if (footerCopy) footerCopy.textContent = T.footerCopy;
+
+  // Guardar preferencia
+  try { localStorage.setItem('cuyen_lang', lang); } catch(e) {}
+}
+
+// Restaurar idioma guardado
+(function() {
+  try {
+    const saved = localStorage.getItem('cuyen_lang');
+    if (saved && saved !== 'es' && CUYEN_LANGS[saved]) setLang(saved);
+  } catch(e) {}
+})();
+</script>

@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
-new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
-"https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,"script","dataLayer","GTM-NVHSMTMN");</script>
-<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cuyen CO — Hostería Boutique · Villa La Angostura</title>
+<!-- Preload imagen hero móvil -->
+<link rel="preload" as="image"
+  href="https://res.cloudinary.com/dzld5gwmr/image/upload/f_auto,q_auto,w_800/v1777166639/WhatsApp_Image_2026-04-25_at_8.29.24_PM_rw1092.jpg"
+  media="(max-width: 860px)">
+<!-- Preload imagen hero desktop -->
+<link rel="preload" as="image"
+  href="https://res.cloudinary.com/dzld5gwmr/image/upload/f_auto,q_auto,w_1920/v1777166639/WhatsApp_Image_2026-04-25_at_8.29.24_PM_rw1092.jpg"
+  media="(min-width: 861px)">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -63,18 +64,19 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
   .scroll-line { width: 0.8px; height: 32px; background: currentColor; }
   @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
 
-  .hero-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,15,25,0.35) 0%, rgba(10,15,25,0.05) 40%, rgba(10,15,25,0.65) 100%), url('https://res.cloudinary.com/dzld5gwmr/image/upload/f_auto,q_auto,w_1920/v1777166639/WhatsApp_Image_2026-04-25_at_8.29.24_PM_rw1092.jpg') center/cover no-repeat; transform: scale(1.08); animation: slowZoom 30s ease-out forwards; }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,15,25,0.45) 0%, rgba(10,15,25,0.25) 40%, rgba(10,15,25,0.75) 100%), url('https://res.cloudinary.com/dzld5gwmr/image/upload/f_auto,q_auto,w_1920/v1777166639/WhatsApp_Image_2026-04-25_at_8.29.24_PM_rw1092.jpg') center/cover no-repeat; transform: scale(1.08); animation: slowZoom 30s ease-out forwards; }
+  @media (max-width: 860px) { .hero-bg { background-image: linear-gradient(to bottom, rgba(10,15,25,0.75) 0%, rgba(10,15,25,0.35) 50%, rgba(10,15,25,0.75) 100%), url('https://res.cloudinary.com/dzld5gwmr/image/upload/f_auto,q_auto,w_800/v1777166639/WhatsApp_Image_2026-04-25_at_8.29.24_PM_rw1092.jpg'); } }
   @keyframes slowZoom { from{transform:scale(1.03)} to{transform:scale(1.0)} }
   .hero-content { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); text-align: center; animation: fadeUp 1.3s ease both 0.3s; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
   @keyframes fadeIn  { from{opacity:0} to{opacity:1} }
-  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,0.92); text-shadow: 0 1px 8px rgba(0,0,0,0.5); }
-  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 300; line-height: 0.88; color: var(--white); letter-spacing: 0.04em; margin-bottom: 1.5rem; }
-  .hero-sub { font-size: 0.75rem; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 2.5rem; }
+  .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(255,255,255,1); text-shadow: 0 1px 8px rgba(0,0,0,0.6); }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 9vw, 7rem); font-weight: 300; line-height: 0.88; color: var(--white); letter-spacing: 0.04em; margin-bottom: 1.5rem; text-shadow: 0 2px 16px rgba(0,0,0,0.4); }
+  .hero-sub { font-size: clamp(0.9rem, 2vw, 1.15rem); font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.95); text-shadow: 0 1px 8px rgba(0,0,0,0.6); margin-bottom: 2.5rem; }
   .hero-btn { display: inline-block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--stone); background: var(--gold); padding: 0.95rem 2.4rem; text-decoration: none; transition: background 0.3s; }
   .hero-btn:hover { background: var(--white); }
-  .hero-winter { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 6vw, 4.5rem); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.82); letter-spacing: 0.06em; line-height: 1; margin-bottom: 1.2rem; text-shadow: 0 2px 24px rgba(100,160,220,0.35); }
-  .hero-winter-year { font-style: normal; font-weight: 500; color: #a8d4f0; letter-spacing: 0.1em; }
+  .hero-winter { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2.5vw, 1.8rem); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; line-height: 1; margin-bottom: 1.2rem; }
+  .hero-winter-year { font-style: normal; font-weight: 400; color: rgba(255,255,255,0.55); letter-spacing: 0.1em; }
 
   .split { display: grid; grid-template-columns: 58% 42%; }
   .split.reverse { grid-template-columns: 42% 58%; }
@@ -1203,10 +1205,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="snap" id="inicio">
   <div class="hero-bg" id="hero-bg"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Villa La Angostura · Patagonia</p>
     <h1 class="hero-title">Cuyen CO</h1>
+    <p class="hero-sub">Hostería boutique · Alojamiento en Villa La Angostura</p>
     <p class="hero-winter">Invierno <span class="hero-winter-year">2026</span></p>
-    <p class="hero-sub">Nieve, silencio y fuego · Hostería boutique</p>
     <a href="#bienvenida" class="hero-btn">Descubrir</a>
   </div>
 </section>
@@ -2763,6 +2764,14 @@ cargarDatosFirebase();
 </script>
 
 </script>
+
+<!-- Google Tag Manager (movido al final para no bloquear render) -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
+new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
+"https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,"script","dataLayer","GTM-NVHSMTMN");</script>
+<!-- End Google Tag Manager -->
 </body>
 </html><!-- SISTEMA DE IDIOMAS ES / EN / PT -->
 <script>
@@ -2774,7 +2783,7 @@ const CUYEN_LANGS = {
     mobBtn: '❄️ Consultar fechas',
     heroEyebrow: 'Villa La Angostura · Patagonia',
     heroWinter: 'Invierno', heroWinterYear: '2026',
-    heroSub: 'Nieve, silencio y fuego · Hostería boutique',
+    heroSub: 'Hostería boutique · Alojamiento en Villa La Angostura',
     heroBtnText: 'Descubrir',
     bienTag: 'Bienvenidos', bienTitle: 'A orillas del<br><em>lago Correntoso</em>',
     bienBody: 'A solo 2 minutos a pie, a través de un bosque autóctono de arrayanes, encontrarás la orilla del lago Correntoso. Cuyen CO es una hostería de 10 habitaciones con vista al lago y al cerro Belvedere, donde la naturaleza patagónica entra por cada ventana.',

@@ -64,8 +64,10 @@
   .scroll-line { width: 0.8px; height: 32px; background: currentColor; }
   @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
 
-  .hero-bg { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,15,25,0.45) 0%, rgba(10,15,25,0.25) 40%, rgba(10,15,25,0.75) 100%), url('https://res.cloudinary.com/dzld5gwmr/image/upload/f_auto,q_auto,w_1920/v1777166639/WhatsApp_Image_2026-04-25_at_8.29.24_PM_rw1092.jpg') center/cover no-repeat; transform: scale(1.08); animation: slowZoom 30s ease-out forwards; }
-  @media (max-width: 860px) { .hero-bg { background-image: linear-gradient(to bottom, rgba(10,15,25,0.75) 0%, rgba(10,15,25,0.35) 50%, rgba(10,15,25,0.75) 100%), url('https://res.cloudinary.com/dzld5gwmr/image/upload/f_auto,q_auto,w_800/v1777166639/WhatsApp_Image_2026-04-25_at_8.29.24_PM_rw1092.jpg'); } }
+  .hero-bg { position: absolute; inset: 0; transform: scale(1.08); animation: slowZoom 30s ease-out forwards; overflow: hidden; }
+  .hero-bg-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .hero-bg-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,15,25,0.45) 0%, rgba(10,15,25,0.25) 40%, rgba(10,15,25,0.75) 100%); }
+  @media (max-width: 860px) { .hero-bg-overlay { background: linear-gradient(to bottom, rgba(10,15,25,0.75) 0%, rgba(10,15,25,0.35) 50%, rgba(10,15,25,0.75) 100%); } }
   @keyframes slowZoom { from{transform:scale(1.03)} to{transform:scale(1.0)} }
   .hero-content { position: absolute; top: 50%; left: 0; right: 0; transform: translateY(-50%); text-align: center; animation: fadeUp 1.3s ease both 0.3s; }
   @keyframes fadeUp { from{opacity:0;transform:translateY(26px)} to{opacity:1;transform:translateY(0)} }
@@ -76,7 +78,7 @@
   .hero-btn { display: inline-block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; color: var(--stone); background: var(--gold); padding: 0.95rem 2.4rem; text-decoration: none; transition: background 0.3s; }
   .hero-btn:hover { background: var(--white); }
   .hero-winter { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 2.5vw, 1.8rem); font-weight: 300; font-style: italic; color: rgba(255,255,255,0.55); letter-spacing: 0.06em; line-height: 1; margin-bottom: 1.2rem; }
-  .hero-winter-year { font-style: normal; font-weight: 400; color: rgba(255,255,255,0.55); letter-spacing: 0.1em; }
+  .hero-winter-year { font-style: normal; font-weight: 400; color: #4aa8f0; letter-spacing: 0.1em; }
 
   .split { display: grid; grid-template-columns: 58% 42%; }
   .split.reverse { grid-template-columns: 42% 58%; }
@@ -1203,7 +1205,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- 1. HERO -->
 <section class="snap" id="inicio">
-  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-bg" id="hero-bg">
+    <img
+      class="hero-bg-img"
+      src="https://res.cloudinary.com/dzld5gwmr/image/upload/f_auto,q_auto,w_1920/v1777166639/WhatsApp_Image_2026-04-25_at_8.29.24_PM_rw1092.jpg"
+      srcset="https://res.cloudinary.com/dzld5gwmr/image/upload/f_auto,q_auto,w_800/v1777166639/WhatsApp_Image_2026-04-25_at_8.29.24_PM_rw1092.jpg 800w,
+              https://res.cloudinary.com/dzld5gwmr/image/upload/f_auto,q_auto,w_1920/v1777166639/WhatsApp_Image_2026-04-25_at_8.29.24_PM_rw1092.jpg 1920w"
+      sizes="100vw"
+      alt="Hostería Cuyen CO - Alojamiento en Villa La Angostura"
+      fetchpriority="high"
+      decoding="sync"
+    >
+    <div class="hero-bg-overlay"></div>
+  </div>
   <div class="hero-content">
     <h1 class="hero-title">Cuyen CO</h1>
     <p class="hero-sub">Hostería boutique · Alojamiento en Villa La Angostura</p>
